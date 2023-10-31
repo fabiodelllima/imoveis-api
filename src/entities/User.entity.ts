@@ -1,4 +1,6 @@
 import {
+  BeforeInsert,
+  BeforeUpdate,
   Column,
   CreateDateColumn,
   Entity,
@@ -6,6 +8,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import Schedule from './Schedule.entity';
+import { getRounds, hashSync } from 'bcryptjs';
 
 @Entity('users')
 export default class User {
@@ -38,4 +41,12 @@ export default class User {
     (schedules) => schedules.user
   )
   schedules: Schedule[];
+
+  @BeforeInsert()
+  @BeforeUpdate()
+  hashPassword() {
+    const hasRounds: number = getRounds(this.password);
+
+    if (!hasRounds) this.password = hashSync(this.password, 10);
+  }
 }
