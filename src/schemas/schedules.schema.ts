@@ -7,3 +7,8 @@ export const scheduleSchema = z.object({
   realEstateId: z.number().positive().int(),
   userId: z.number().positive().int(),
 });
+
+export const createNewSchedule = scheduleSchema.omit({
+  realEstateId: true,
+  userId: true,
+});
