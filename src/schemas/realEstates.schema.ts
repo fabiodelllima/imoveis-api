@@ -16,3 +16,9 @@ export const realEstateSchema = z.object({
   }),
   categoryName: z.string().max(45),
 });
+
+export const createRealEstateSchema = realEstateSchema.omit({
+  id: true,
+  createdtAt: true,
+  updatedAt: true,
+});
