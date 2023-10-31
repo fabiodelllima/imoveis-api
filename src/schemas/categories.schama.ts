@@ -5,3 +5,6 @@ export const categorySchema = z.object({
   name: z.string().max(45),
 });
 
+export const createCategorySchema = categorySchema.omit({
+  id: true,
+});
