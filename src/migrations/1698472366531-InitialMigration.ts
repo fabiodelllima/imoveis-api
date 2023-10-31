@@ -1,11 +1,16 @@
-import { MigrationInterface, QueryRunner } from 'typeorm';
+import {
+  MigrationInterface,
+  QueryRunner,
+} from 'typeorm';
 
 export class InitialMigration1698472366531
   implements MigrationInterface
 {
   name = 'InitialMigration1698472366531';
 
-  public async up(queryRunner: QueryRunner): Promise<void> {
+  public async up(
+    queryRunner: QueryRunner
+  ): Promise<void> {
     await queryRunner.query(
       `CREATE TABLE "users" ("id" SERIAL NOT NULL, "name" character varying(45) NOT NULL, "email" character varying(45) NOT NULL, "admin" boolean NOT NULL DEFAULT false, "password" character varying(120) NOT NULL, "createdAt" date NOT NULL DEFAULT now(), "updatedAt" date NOT NULL DEFAULT now(), "deletedAt" date DEFAULT now(), CONSTRAINT "UQ_97672ac88f789774dd47f7c8be3" UNIQUE ("email"), CONSTRAINT "PK_a3ffb1c0c8416b9fc6f907b7433" PRIMARY KEY ("id"))`
     );
@@ -35,7 +40,9 @@ export class InitialMigration1698472366531
     );
   }
 
-  public async down(queryRunner: QueryRunner): Promise<void> {
+  public async down(
+    queryRunner: QueryRunner
+  ): Promise<void> {
     await queryRunner.query(
       `ALTER TABLE "realEstates" DROP CONSTRAINT "FK_47ed1f0bbf85e8083bd390ef95c"`
     );
@@ -48,7 +55,9 @@ export class InitialMigration1698472366531
     await queryRunner.query(
       `ALTER TABLE "schedules" DROP CONSTRAINT "FK_19c54f24597b318be3892114c75"`
     );
-    await queryRunner.query(`DROP TABLE "realEstates"`);
+    await queryRunner.query(
+      `DROP TABLE "realEstates"`
+    );
     await queryRunner.query(`DROP TABLE "categories"`);
     await queryRunner.query(`DROP TABLE "addresses"`);
     await queryRunner.query(`DROP TABLE "schedules"`);

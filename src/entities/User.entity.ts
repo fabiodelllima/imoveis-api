@@ -33,6 +33,9 @@ export default class User {
   @CreateDateColumn({ type: 'date', nullable: true })
   deletedAt: string | null;
 
-  @OneToMany(() => Schedule, (schedules) => schedules.user)
+  @OneToMany(
+    () => Schedule,
+    (schedules) => schedules.user
+  )
   schedules: Schedule[];
 }
