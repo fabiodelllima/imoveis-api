@@ -33,4 +33,6 @@ export const userWithoutAdmin = createUserSchema.omit({
 
 export const updateUserSchema = userWithoutAdmin.partial();
 
-export const readUserSchema = userReturnSchema.array();
+export const userReadSchema = userReturnSchema.array();
+
+export const userReturnListSchema = userReturnSchema.array();
