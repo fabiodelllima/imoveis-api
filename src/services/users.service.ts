@@ -39,3 +39,8 @@ export const updateUserService = async (
   return userReturnSchema.parse(userUpdate);
 };
 
+export const deleteUserService = async (
+  user: User
+): Promise<void> => {
+  await userRepo.softRemove(user);
+};
