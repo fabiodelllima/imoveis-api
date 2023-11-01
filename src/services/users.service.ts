@@ -4,6 +4,7 @@ import {
   TUserCreate,
   TUserReadReturn,
   TUserReturn,
+  TUserUpdate,
 } from '../interfaces/users.interface';
 import {
   userReturnListSchema,
@@ -26,3 +27,15 @@ export const readAllUsersService =
 
     return userReturnListSchema.parse(allUsers);
   };
+
+export const updateUserService = async (
+  data: TUserUpdate,
+  user: User
+): Promise<TUserReturn> => {
+  const userUpdate = userRepo.create({ ...user, ...data });
+
+  await userRepo.save(userUpdate);
+
+  return userReturnSchema.parse(userUpdate);
+};
+
