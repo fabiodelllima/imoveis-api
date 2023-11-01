@@ -24,3 +24,16 @@ export const verifyToken = (
   return next();
 };
 
+export const verifyAdmin = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): void => {
+  const { admin } = res.locals.decoded;
+
+  if (!admin)
+    throw new AppError('Insufficient permissions', 403);
+
+  return next();
+};
+
