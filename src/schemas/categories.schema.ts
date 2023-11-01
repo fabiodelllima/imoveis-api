@@ -8,3 +8,5 @@ export const categorySchema = z.object({
 export const createCategorySchema = categorySchema.omit({
   id: true,
 });
+
+export const readAllCategoriesSchema = categorySchema.array();
