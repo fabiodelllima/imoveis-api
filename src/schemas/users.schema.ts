@@ -3,6 +3,7 @@ import { z } from 'zod';
 export const userSchema = z.object({
   id: z.number().positive(),
   name: z.string().max(45),
+  email: z.string().email(),
   admin: z.boolean().default(false),
   password: z.string().max(120),
   createdAt: z.string(),
@@ -30,7 +31,6 @@ export const userWithoutAdmin = createUserSchema.omit({
   admin: true,
 });
 
-export const updateUserSchema =
-  userWithoutAdmin.partial();
+export const updateUserSchema = userWithoutAdmin.partial();
 
 export const readUserSchema = userReturnSchema.array();
