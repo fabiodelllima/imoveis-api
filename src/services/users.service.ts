@@ -1,10 +1,14 @@
 import User from '../entities/User.entity';
+import { userRepo } from '../repositories';
 import {
   TUserCreate,
+  TUserReadReturn,
   TUserReturn,
 } from '../interfaces/users.interface';
-import { userRepo } from '../repositories';
-import { userReturnSchema } from '../schemas/users.schema';
+import {
+  userReturnListSchema,
+  userReturnSchema,
+} from '../schemas/users.schema';
 
 export const createUserService = async (
   data: TUserCreate
@@ -15,3 +19,10 @@ export const createUserService = async (
 
   return userReturnSchema.parse(user);
 };
+
+export const readAllUsersService =
+  async (): Promise<TUserReadReturn> => {
+    const allUsers: User[] = await userRepo.find();
+
+    return userReturnListSchema.parse(allUsers);
+  };
