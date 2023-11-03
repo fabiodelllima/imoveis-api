@@ -6,6 +6,7 @@ import {
   Entity,
   OneToMany,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import Schedule from './Schedule.entity';
 import { getRounds, hashSync } from 'bcryptjs';
@@ -30,7 +31,7 @@ export default class User {
   @CreateDateColumn({ type: 'date' })
   createdAt: string;
 
-  @CreateDateColumn({ type: 'date' })
+  @UpdateDateColumn({ type: 'date' })
   updatedAt: string;
 
   @CreateDateColumn({ type: 'date', nullable: true })
