@@ -3,6 +3,7 @@ import {
   BeforeUpdate,
   Column,
   CreateDateColumn,
+  DeleteDateColumn,
   Entity,
   OneToMany,
   PrimaryGeneratedColumn,
@@ -34,7 +35,10 @@ export default class User {
   @UpdateDateColumn({ type: 'date' })
   updatedAt: string;
 
-  @CreateDateColumn({ type: 'date', nullable: true })
+  @DeleteDateColumn({
+    type: 'date',
+    nullable: true,
+  })
   deletedAt: string | null;
 
   @OneToMany(() => Schedule, (schedules) => schedules.user)
