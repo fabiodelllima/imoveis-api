@@ -1,13 +1,19 @@
 import { Router } from 'express';
+import { verifyUserExists } from '../middlewares/users.middleware';
 import {
   validateBody,
   verifyAdmin,
+  verifyPermissions,
   verifyToken,
 } from '../middlewares/globals.middleware';
-import { createUserSchema } from '../schemas/users.schema';
+import {
+  createUserSchema,
+  updateUserSchema,
+} from '../schemas/users.schema';
 import {
   createUserController,
   readAllUsersController,
+  updateUserController,
 } from '../controllers/users.controller';
 
 export const userRouter: Router = Router();
@@ -24,3 +30,13 @@ userRouter.get(
   verifyAdmin,
   readAllUsersController
 );
+
+userRouter.patch(
+  '/:id',
+  validateBody(updateUserSchema),
+  verifyToken,
+  verifyUserExists,
+  verifyPermissions,
+  updateUserController
+);
+
