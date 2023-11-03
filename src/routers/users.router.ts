@@ -14,6 +14,7 @@ import {
   createUserController,
   readAllUsersController,
   updateUserController,
+  deleteUserController,
 } from '../controllers/users.controller';
 
 export const userRouter: Router = Router();
@@ -40,3 +41,10 @@ userRouter.patch(
   updateUserController
 );
 
+userRouter.delete(
+  '/:id',
+  verifyToken,
+  verifyUserExists,
+  verifyAdmin,
+  deleteUserController
+);
