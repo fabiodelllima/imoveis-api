@@ -20,5 +20,3 @@ export const categoryRepo: Repository<Category> =
 
 export const userRepo: Repository<User> =
   AppDataSource.getRepository(User);
-
-// [?] export const scheduleRepo: TScheduleRepo = AppDataSource.getRepository(Schedule); [?]
