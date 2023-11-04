@@ -25,7 +25,7 @@ export default class RealEstate {
     scale: 2,
     default: 0,
   })
-  value: number;
+  value: number | string;
 
   @Column()
   size: number;
@@ -36,22 +36,13 @@ export default class RealEstate {
   @Column({ type: 'date' })
   updatedAt: string;
 
-  @OneToMany(
-    () => Schedule,
-    (schedule) => schedule.realEstate
-  )
+  @OneToMany(() => Schedule, (schedule) => schedule.realEstate)
   schedules: Schedule[];
 
-  @OneToOne(
-    () => Address,
-    (address) => address.realEstate
-  )
+  @OneToOne(() => Address, (address) => address.realEstate)
   @JoinColumn()
   address: Address;
 
-  @ManyToOne(
-    () => Category,
-    (category) => category.realEstates
-  )
+  @ManyToOne(() => Category, (category) => category.realEstates)
   category: Category;
 }
