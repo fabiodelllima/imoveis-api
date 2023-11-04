@@ -35,8 +35,7 @@ export const verifyAdmin = (
 ): void => {
   const { admin } = res.locals.decoded;
 
-  if (!admin)
-    throw new AppError('Insufficient permissions', 403);
+  if (!admin) throw new AppError('Insufficient permission', 403);
 
   return next();
 };
