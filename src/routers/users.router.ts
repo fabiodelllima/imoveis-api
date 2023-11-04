@@ -1,5 +1,6 @@
 import { Router } from 'express';
-import { verifyUserExists } from '../middlewares/users.middleware';
+import { verifyEmailExists } from '../middlewares/verifyEmailExists.middleware';
+import { verifyUserExists } from '../middlewares/verifyUserExists.middleware';
 import {
   validateBody,
   verifyAdmin,
@@ -22,6 +23,7 @@ export const userRouter: Router = Router();
 userRouter.post(
   '/',
   validateBody(createUserSchema),
+  verifyEmailExists,
   createUserController
 );
 
