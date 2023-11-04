@@ -1,5 +1,8 @@
 import { Router } from 'express';
-import { createRealEstateController } from '../controllers/realEstates.controller';
+import {
+  createRealEstateController,
+  readAllRealEstatesController,
+} from '../controllers/realEstates.controller';
 import { validateBody } from '../middlewares/globals.middleware';
 import { createRealEstateSchema } from '../schemas/realEstates.schema';
 
@@ -10,3 +13,5 @@ realEstateRouter.post(
   validateBody(createRealEstateSchema),
   createRealEstateController
 );
+
+realEstateRouter.get('/', readAllRealEstatesController);
