@@ -32,7 +32,7 @@ export const updateUserService = async (
   data: TUserUpdate,
   user: User
 ): Promise<TUserReturn> => {
-  const userUpdate = userRepo.create({ ...user, ...data });
+  const userUpdate: User = userRepo.create({ ...user, ...data });
 
   await userRepo.save(userUpdate);
 
