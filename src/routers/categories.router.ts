@@ -1,5 +1,8 @@
 import { Router } from 'express';
-import { createCategoryController } from '../controllers/categories.controller';
+import {
+  createCategoryController,
+  readAllCategoriesController,
+} from '../controllers/categories.controller';
 import { createCategorySchema } from '../schemas/categories.schema';
 import { validateBody } from '../middlewares/globals.middleware';
 
@@ -11,4 +14,4 @@ categoryRouter.post(
   createCategoryController
 );
 
-categoryRouter.get('/');
+categoryRouter.get('/', readAllCategoriesController);
