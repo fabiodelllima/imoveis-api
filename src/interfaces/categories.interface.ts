@@ -8,6 +8,6 @@ export type TCreateCategory = z.infer<
   typeof createCategorySchema
 >;
 
-export type ReadAllCategories = z.infer<
+export type TReadAllCategories = z.infer<
   typeof readAllCategoriesSchema
 >;
