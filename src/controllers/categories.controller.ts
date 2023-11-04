@@ -8,9 +8,9 @@ export const createCategoryController = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const category = await createCategoryService(req.body);
+  const newCategory = await createCategoryService(req.body);
 
-  return res.status(201).json(category);
+  return res.status(201).json(newCategory);
 };
 
 export const readAllCategoriesController = async (

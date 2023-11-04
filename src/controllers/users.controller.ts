@@ -11,9 +11,9 @@ export const createUserController = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const user: TUserReturn = await createUserService(req.body);
+  const newUser: TUserReturn = await createUserService(req.body);
 
-  return res.status(201).json(user);
+  return res.status(201).json(newUser);
 };
 
 export const readAllUsersController = async (
@@ -30,9 +30,9 @@ export const updateUserController = async (
   res: Response
 ): Promise<Response> => {
   const { user } = res.locals;
-  const newUser = await updateUserService(req.body, user);
+  const updatedUser = await updateUserService(req.body, user);
 
-  return res.status(200).json(newUser);
+  return res.status(200).json(updatedUser);
 };
 
 export const deleteUserController = async (
