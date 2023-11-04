@@ -14,11 +14,11 @@ import {
 export const createUserService = async (
   data: TUserCreate
 ): Promise<TUserReturn> => {
-  const user: User = userRepo.create(data);
+  const newUser: User = userRepo.create(data);
 
-  await userRepo.save(user);
+  await userRepo.save(newUser);
 
-  return userReturnSchema.parse(user);
+  return userReturnSchema.parse(newUser);
 };
 
 export const readAllUsersService =
