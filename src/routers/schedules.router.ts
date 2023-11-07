@@ -27,3 +27,9 @@ scheduleRouter.post(
   createScheduleController
 );
 
+scheduleRouter.get(
+  '/realEstate/:id',
+  verifyToken,
+  verifyAdmin,
+  readAllSchedulesByRealEstateController
+);
