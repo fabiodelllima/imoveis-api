@@ -4,7 +4,7 @@ export const realEstateSchema = z.object({
   id: z.number().positive(),
   sold: z.boolean().default(false),
   value: z.number().or(z.string()),
-  size: z.number(),
+  size: z.number().positive(),
   createdAt: z.string(),
   updatedAt: z.string(),
   address: z.object({
