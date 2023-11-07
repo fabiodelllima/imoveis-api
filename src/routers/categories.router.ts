@@ -2,6 +2,7 @@ import { Router } from 'express';
 import {
   createCategoryController,
   readAllCategoriesController,
+  readRealEstateByCategoryController,
 } from '../controllers/categories.controller';
 import { createCategorySchema } from '../schemas/categories.schema';
 import { validateBody } from '../middlewares/globals.middleware';
@@ -15,3 +16,8 @@ categoryRouter.post(
 );
 
 categoryRouter.get('/', readAllCategoriesController);
+
+categoryRouter.get(
+  '/:id/realEstate',
+  readRealEstateByCategoryController
+);
