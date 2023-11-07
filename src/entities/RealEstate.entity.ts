@@ -33,7 +33,7 @@ export default class RealEstate {
   size: number;
 
   @CreateDateColumn({ type: 'date' })
-  createdtAt: string;
+  createdAt: string;
 
   @UpdateDateColumn({ type: 'date' })
   updatedAt: string;

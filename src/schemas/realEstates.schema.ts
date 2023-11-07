@@ -5,7 +5,7 @@ export const realEstateSchema = z.object({
   sold: z.boolean().default(false),
   value: z.number().or(z.string()),
   size: z.number(),
-  createdtAt: z.string(),
+  createdAt: z.string(),
   updatedAt: z.string(),
   address: z.object({
     street: z.string().max(45),
@@ -19,6 +19,6 @@ export const realEstateSchema = z.object({
 
 export const createRealEstateSchema = realEstateSchema.omit({
   id: true,
-  createdtAt: true,
+  createdAt: true,
   updatedAt: true,
 });
