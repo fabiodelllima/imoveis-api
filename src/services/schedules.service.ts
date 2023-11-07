@@ -15,10 +15,16 @@ export const createScheduleService = async (
   const time = Number(data.hour.split(':')[0]);
 
   if (newDate === 0 || newDate === 6)
-    throw new AppError('Invalid date', 400);
+    throw new AppError(
+      'Invalid date, work days are monday to friday',
+      400
+    );
 
   if (time < 8 || time > 18)
-    throw new AppError('Invalid hour', 400);
+    throw new AppError(
+      'Invalid hour, available times are 8AM to 18PM',
+      400
+    );
 
   const { realEstateId, ...rest } = data;
 
