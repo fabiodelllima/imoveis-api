@@ -1,3 +1,4 @@
+import { scheduleSchema } from './../schemas/schedules.schema';
 import { RealEstate, User } from '../entities';
 import AppError from '../errors/AppError.error';
 import {
@@ -44,3 +45,25 @@ export const createScheduleService = async (
   });
 };
 
+export const readAllSchedulesByRealEstateService = async (
+  id: number
+): Promise<RealEstate> => {
+  const realEstate: RealEstate | null =
+    await realEstateRepo.findOne({
+      where: {
+        id,
+      },
+      relations: {
+        schedules: {
+          user: true,
+        },
+        address: true,
+        category: true,
+      },
+    });
+
+  if (!realEstate)
+    throw new AppError('RealEstate not found', 404);
+
+  return realEstate;
+};
