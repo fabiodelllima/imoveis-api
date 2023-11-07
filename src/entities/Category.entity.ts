@@ -18,5 +18,5 @@ export default class Category {
     () => RealEstate,
     (realEstate) => realEstate.category
   )
-  realEstates: RealEstate[];
+  realEstate: RealEstate[];
 }
