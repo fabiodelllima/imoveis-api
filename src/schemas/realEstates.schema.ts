@@ -14,7 +14,7 @@ export const realEstateSchema = z.object({
     city: z.string().max(20),
     state: z.string().max(2),
   }),
-  categoryName: z.string().max(45),
+  categoryId: z.number(),
 });
 
 export const createRealEstateSchema = realEstateSchema.omit({
