@@ -9,14 +9,16 @@ import {
   verifyToken,
 } from '../middlewares/globals.middleware';
 import { createRealEstateSchema } from '../schemas/realEstates.schema';
+import { verifyRealEstateAddressExists } from '../middlewares/realEstates.middleware';
 
 export const realEstateRouter: Router = Router();
 
 realEstateRouter.post(
   '/',
-  validateBody(createRealEstateSchema),
   verifyToken,
   verifyAdmin,
+  validateBody(createRealEstateSchema),
+  verifyRealEstateAddressExists,
   createRealEstateController
 );
 
