@@ -1,11 +1,13 @@
 import {
   Column,
+  CreateDateColumn,
   Entity,
   JoinColumn,
   ManyToOne,
   OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import Schedule from './Schedule.entity';
 import Address from './Address.entity';
@@ -30,10 +32,10 @@ export default class RealEstate {
   @Column()
   size: number;
 
-  @Column({ type: 'date' })
+  @CreateDateColumn({ type: 'date' })
   createdtAt: string;
 
-  @Column({ type: 'date' })
+  @UpdateDateColumn({ type: 'date' })
   updatedAt: string;
 
   @OneToMany(() => Schedule, (schedule) => schedule.realEstate)
