@@ -18,7 +18,7 @@ export const verifyRealEstateExists = async (
     });
 
   if (!realEstate)
-    throw new AppError('Real Estate not found', 404);
+    throw new AppError('RealEstate not found', 404);
 
   return next();
 };
