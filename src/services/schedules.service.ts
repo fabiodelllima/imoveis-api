@@ -1,4 +1,3 @@
-import { scheduleSchema } from './../schemas/schedules.schema';
 import { RealEstate, User } from '../entities';
 import AppError from '../errors/AppError.error';
 import {
