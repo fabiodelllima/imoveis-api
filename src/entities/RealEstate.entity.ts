@@ -1,11 +1,13 @@
 import {
   Column,
+  CreateDateColumn,
   Entity,
   JoinColumn,
   ManyToOne,
   OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import Schedule from './Schedule.entity';
 import Address from './Address.entity';
@@ -25,15 +27,15 @@ export default class RealEstate {
     scale: 2,
     default: 0,
   })
-  value: number;
+  value: number | string;
 
   @Column()
   size: number;
 
-  @Column({ type: 'date' })
-  createdtAt: string;
+  @CreateDateColumn({ type: 'date' })
+  createdAt: string;
 
-  @Column({ type: 'date' })
+  @UpdateDateColumn({ type: 'date' })
   updatedAt: string;
 
   @OneToMany(() => Schedule, (schedule) => schedule.realEstate)
@@ -43,6 +45,6 @@ export default class RealEstate {
   @JoinColumn()
   address: Address;
 
-  @ManyToOne(() => Category, (category) => category.realEstates)
+  @ManyToOne(() => Category, (category) => category.realEstate)
   category: Category;
 }
