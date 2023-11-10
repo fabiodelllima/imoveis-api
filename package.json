@@ -1,6 +1,6 @@
 {
-  "name": "sprint_6",
-  "version": "1.0.0",
+  "name": "imoveis-api",
+  "version": "2.0.0",
   "main": "index.ts",
   "license": "MIT",
   "scripts": {
